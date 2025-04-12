@@ -1,5 +1,5 @@
 {
-  "name": "thelounge",
+  "name": "twiedenbein-thelounge",
   "description": "The self-hosted Web IRC client",
   "version": "4.4.3",
   "preferGlobal": true,
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thelounge/thelounge.git"
+    "url": "https://github.com/twiedenbein/thelounge.git"
   },
   "homepage": "https://thelounge.chat/",
   "scripts": {
