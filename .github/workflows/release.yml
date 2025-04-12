@@ -48,6 +48,6 @@ jobs:
 
       - name: Remove next tag
         if: "!contains(github.ref, '-')"
-        run: npm dist-tag rm thelounge next || true
+        run: npm dist-tag rm twiedenbein-thelounge next || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
