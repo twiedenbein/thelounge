@@ -39,7 +39,7 @@ export default <IrcEventHandler>function (irc, network) {
 			
 			// Auto-rejoin the channel if the setting is enabled for this network
 			if (network.autoRejoin) {
-				console.log(
+				log.info(
 					`Auto-rejoining channel ${chan.name} after being kicked by ${data.nick}`
 				);
 				
