@@ -36,17 +36,15 @@ export default <IrcEventHandler>function (irc, network) {
 				chan: chan.id,
 				state: chan.state,
 			});
-			
+
 			// Auto-rejoin the channel if the setting is enabled for this network
 			if (network.autoRejoin) {
-				log.info(
-					`Auto-rejoining channel ${chan.name} after being kicked by ${data.nick}`
-				);
-				
+				log.info(`Auto-rejoining channel ${chan.name} after being kicked by ${data.nick}`);
+
 				// Add a small delay before rejoining
 				setTimeout(() => {
 					irc.join(chan.name);
-					
+
 					// Notify the user about the auto-rejoin attempt
 					const rejoinMsg = new Msg({
 						type: MessageType.NOTICE,

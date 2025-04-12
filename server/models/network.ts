@@ -136,8 +136,6 @@ class Network {
 	// TODO: this is only available on export
 	hasSTSPolicy!: boolean;
 
-
-
 	constructor(attr?: Partial<Network>) {
 		_.defaults(this, attr, {
 			name: "",
