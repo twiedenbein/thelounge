@@ -274,6 +274,7 @@ module.exports = {
 		realname: "",
 		join: "#thelounge",
 		leaveMessage: "",
+		autoRejoin: false,
 	},
 
 	// ### `lockNetwork`

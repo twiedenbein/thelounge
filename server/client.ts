@@ -332,6 +332,7 @@ class Client {
 			proxyPort: parseInt(args.proxyPort, 10),
 			proxyUsername: String(args.proxyUsername || ""),
 			proxyPassword: String(args.proxyPassword || ""),
+			autoRejoin: !!args.autoRejoin,
 		});
 	}
 

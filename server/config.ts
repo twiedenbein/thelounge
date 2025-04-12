@@ -44,6 +44,7 @@ export type Defaults = Pick<
 	| "sasl"
 	| "saslAccount"
 	| "saslPassword"
+	| "autoRejoin"
 > & {
 	join: string;
 };

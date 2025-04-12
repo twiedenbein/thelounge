@@ -33,6 +33,7 @@ export type ConfigNetDefaults = {
 	sasl: string;
 	saslAccount: string;
 	saslPassword: string;
+	autoRejoin: boolean;
 };
 export type LockedConfigNetDefaults = Pick<
 	ConfigNetDefaults,

@@ -122,6 +122,7 @@ describe("Network", function () {
 				proxyPort: 1080,
 				proxyPassword: "",
 				proxyUsername: "",
+				autoRejoin: false,
 				channels: [
 					{name: "#thelounge", key: "", muted: false},
 					{name: "&foobar", key: "", muted: false},

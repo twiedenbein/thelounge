@@ -33,6 +33,7 @@ describe("Client", function () {
 		proxyUsername: "",
 		proxyEnabled: false,
 		proxyPassword: "",
+		autoRejoin: false,
 		channels: [],
 	};
 	let logWarnStub: sinon.SinonStub<string[], void>;

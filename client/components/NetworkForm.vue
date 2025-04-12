@@ -98,6 +98,15 @@
 							/>
 							Only allow trusted certificates
 						</label>
+						<label class="tls">
+							<input
+								id="connect:autoRejoin"
+								v-model="defaults.autoRejoin"
+								type="checkbox"
+								name="autoRejoin"
+							/>
+							Autorejoin when kicked
+						</label>
 					</div>
 				</div>
 

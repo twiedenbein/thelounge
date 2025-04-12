@@ -37,6 +37,7 @@ type NetworkIrcOptions = {
 				password: string;
 		  }
 		| Record<string, never>;
+	autorejoin: boolean;
 };
 
 type NetworkStatus = {
@@ -86,6 +87,7 @@ export type NetworkConfig = {
 	proxyEnabled: boolean;
 	highlightRegex?: string;
 	ignoreList: any[];
+	autoRejoin: boolean;
 };
 
 class Network {
@@ -112,6 +114,7 @@ class Network {
 	proxyUsername!: string;
 	proxyPassword!: string;
 	proxyEnabled!: boolean;
+	autoRejoin!: boolean;
 	highlightRegex?: RegExp;
 
 	irc?: IrcFramework.Client & {
@@ -132,6 +135,8 @@ class Network {
 
 	// TODO: this is only available on export
 	hasSTSPolicy!: boolean;
+
+
 
 	constructor(attr?: Partial<Network>) {
 		_.defaults(this, attr, {
@@ -173,6 +178,7 @@ class Network {
 			chanCache: [],
 			ignoreList: [],
 			keepNick: null,
+			autoRejoin: false,
 		});
 
 		if (!this.uuid) {
@@ -218,6 +224,7 @@ class Network {
 		this.name = cleanString(this.name);
 		this.saslAccount = cleanString(this.saslAccount);
 		this.saslPassword = cleanString(this.saslPassword);
+		this.autoRejoin = !!this.autoRejoin;
 
 		this.proxyHost = cleanString(this.proxyHost);
 		this.proxyPort = this.proxyPort || 1080;
@@ -326,6 +333,7 @@ class Network {
 		this.irc.options.rejectUnauthorized = this.rejectUnauthorized;
 		this.irc.options.webirc = this.createWebIrc(client);
 		this.irc.options.client_certificate = null;
+		// this.irc.options.autorejoin = this.autoRejoin;
 
 		if (this.proxyEnabled) {
 			this.irc.options.socks = {
@@ -405,6 +413,7 @@ class Network {
 		this.sasl = String(args.sasl || "");
 		this.saslAccount = String(args.saslAccount || "");
 		this.saslPassword = String(args.saslPassword || "");
+		this.autoRejoin = !!args.autoRejoin;
 
 		this.proxyHost = String(args.proxyHost || "");
 		this.proxyPort = parseInt(args.proxyPort, 10);
@@ -588,6 +597,7 @@ class Network {
 			"proxyPort",
 			"proxyUsername",
 			"proxyPassword",
+			"autoRejoin",
 		];
 
 		if (!Config.values.lockNetwork) {
@@ -630,6 +640,7 @@ class Network {
 			"proxyUsername",
 			"proxyEnabled",
 			"proxyPassword",
+			"autoRejoin",
 		]) as Network;
 
 		network.channels = this.channels
